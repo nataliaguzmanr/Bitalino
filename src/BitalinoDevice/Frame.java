@@ -1,4 +1,4 @@
-package BITalino;
+package BitalinoDevice;
 
 /// A frame returned by BITalino.read()
 public class Frame {
