@@ -1,7 +1,13 @@
+
+
 package BitalinoDevice;
 
 /// A frame returned by BITalino.read()
+
+//FRAME: digital data transmission :divide la senal en fragmentos (frame)
+
 public class Frame {
+	
         /// CRC4 check function result for the frame
 	public int CRC;
 

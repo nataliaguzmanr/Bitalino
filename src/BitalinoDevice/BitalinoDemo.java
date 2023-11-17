@@ -2,7 +2,6 @@ package BitalinoDevice;
 
 
 import java.util.Vector;
-
 import javax.bluetooth.RemoteDevice;
 
 
@@ -12,6 +11,7 @@ import java.util.logging.Logger;
 public class BitalinoDemo {
 
     public static Frame[] frame;
+    //
 
     public static void main(String[] args) {
 
@@ -37,18 +37,19 @@ public class BitalinoDemo {
             bitalino.start(channelsToAcquire);
 
             //Read in total 10000000 times
+            	//lee 10mill x bloque=10
             for (int j = 0; j < 10000000; j++) {
 
                 //Each time read a block of 10 samples 
                 int block_size=10;
-                frame = bitalino.read(block_size);
+                frame = bitalino.read(block_size); //lee 10 de bitalino y lo mete en array de frame
 
                 System.out.println("size block: " + frame.length);
 
                 //Print the samples
                 for (int i = 0; i < frame.length; i++) {
                     System.out.println((j * block_size + i) + " seq: " + frame[i].seq + " "
-                            + frame[i].analog[0] + " "
+                            + frame[i].analog[0] + " " 
                             + frame[i].analog[1] + " "
                     //  + frame[i].analog[2] + " "
                     //  + frame[i].analog[3] + " "
@@ -60,6 +61,7 @@ public class BitalinoDemo {
             }
             //stop acquisition
             bitalino.stop();
+            
         } catch (BITalinoException ex) {
             Logger.getLogger(BitalinoDemo.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Throwable ex) {
